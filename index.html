@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hybrid Digital Twin</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0d10; }
+    #app { width: 100vw; height: 100vh; display: block; }
+
+    #hud {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 10;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: #d7dde3;
+      background: rgba(10, 12, 15, 0.65);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 10px 12px;
+      line-height: 1.5;
+      pointer-events: none;
+      max-width: 320px;
+    }
+    #hud b { color: #7fd1ff; }
+
+    #controls {
+      position: fixed;
+      bottom: 12px;
+      left: 12px;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12px;
+    }
+    #controls button {
+      background: rgba(20, 24, 30, 0.85);
+      color: #d7dde3;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    #controls button:hover { background: rgba(40, 46, 56, 0.9); }
+
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #8fa3b8;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 13px;
+      z-index: 20;
+      background: #0b0d10;
+      transition: opacity 0.4s ease;
+    }
+    .progress-track {
+      width: 240px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      margin-top: 12px;
+      overflow: hidden;
+    }
+    #progress-fill {
+      width: 0%;
+      height: 100%;
+      background: #7fd1ff;
+      transition: width 0.1s linear;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div>Loading splat scene &amp; mesh… <span id="loading-pct">0%</span></div>
+    <div class="progress-track"><div id="progress-fill"></div></div>
+  </div>
+  <canvas id="app"></canvas>
+
+  <div id="hud">
+    <div><b>Hybrid Digital Twin</b> — starter scaffold</div>
+    <div>Drag: orbit · Scroll: zoom · Right-drag: pan</div>
+    <div>G: toggle mesh gizmo drag mode</div>
+    <div id="proximity-readout">proximity: —</div>
+  </div>
+
+  <div id="controls">
+    <button id="save-state">Save state</button>
+    <button id="load-state">Load state</button>
+    <button id="reset-state">Reset</button>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
