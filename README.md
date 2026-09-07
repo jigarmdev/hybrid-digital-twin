@@ -10,6 +10,8 @@ Sections marked `TODO(assignment)` are where you plug in your own splat
 capture and CAD model, and the two README sections below are templates for
 you to fill in with your actual decisions once you've built on top of this.
 
+https://hybrid-digital-twin-fawn.vercel.app/
+
 ## Instructions to run
 
 ```bash
